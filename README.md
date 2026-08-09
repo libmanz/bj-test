@@ -66,7 +66,7 @@ functionality to retrieve all available at a time events. This intentional desig
 Also, optimization of event publishing, i.e. batching, is out of scope at this time.        
 
 **Rate mismatch**.
-To simulate rate mismatch, a separate input/output configuration delay is provided. See "Concurrency design" below.
+To simulate rate mismatch, an optional separate input/output configuration delays are provided.
 
 **End of stream**.
 Once input event stream is closed (no more records), the consumer keeps draining events till buffer is empty (graceful shutdown).
