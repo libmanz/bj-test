@@ -103,8 +103,6 @@ stream providers in the future, pub/sub interface extraction, unit tests.
 4. **Audit Trail** 20%. Plugging in audit trail interface and implementation as per task requirement.
 5. **Readme** 10%. 
 
-Total time was ~5 hours.
-
 ## Design choices
 1. The task is to support slow consumer, its imperative that we don't have unlimited in-memory storage.
 So at some stage events are needed to be discarded even if we have large buffer.
