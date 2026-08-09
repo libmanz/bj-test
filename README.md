@@ -7,13 +7,17 @@ delay after processing each row to simulate real behaviors.
 
 
 ## How to use it
-
+### Locally
+After checking out project
 ```
 mvn test
 mvn exec:java -Dexec.args="src/test/resources/market_inputs.csv"
 mvn exec:java -Dexec.args="src/test/resources/market_inputs.csv --input-delay-ms 1 --output-delay-ms 4 --jitter-pct 0.2 --seed 42"
 mvn exec:java -Dexec.args="src/test/resources/market_inputs.csv --lock-free"
 ```
+### GitHub actions
+You can run solution using _GitHub Actions_ 
+[![Execute DVP](../../actions/workflows/maven-exec-dvp.yml/badge.svg)](../../actions/workflows/maven-exec-dvp.yml) action. `Published_output.csv` and `audit.csv` will be avalable in action artifacts.  
 
 CLI flags:
 
