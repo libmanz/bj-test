@@ -115,11 +115,12 @@ instrument. The LinkedHashMap satisfies this requirement.
 
 ## AI use
 Claude (Sonnet 5, via claude.ai website (not local CLI), free plan) was used as interactive build tool/partner/code reviewer.
+It's a collaboration tool that allows to validate and improve solution design, receive feedback, generate code, unit tests and then review it independently.
 The approach to use LinkedHasMap was identified prior to consulting AI agent, then it was confirmed in conversation with the agent.
 I worked through design decisions (conflation strategy, fairness guarantee) in conversation before code was written. 
-This was iterative process, i.e. the code was built incrementally, one feature or refactoring item at a time, with me reviewing each diff,
-making local changes if needed, then running tests and solution.
+This was iterative process, i.e. the code was built incrementally, one feature or class or refactoring item at a time, with me reviewing each diff,
+making local changes if needed, then running tests and olution.
 First ConflatingBuffer was created along with publisher, all as one class.
-It was then split into interface, concrete implementation and other classes. 
+It was then split into interface, concrete implementation and other classes, the process repeated number of times. 
 The class and interface structures, orchestration pipeline were created based on my instructions.
-The Audit requirements, what and when needs to be logged were provided by me. 
+The Audit requirements, what and when needs to be logged were provided by me.
