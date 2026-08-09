@@ -1,0 +1,30 @@
+name: Execute DVP
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_arguments:
+        description: 'Arguments to pass to the Java app'
+        required: false
+        default: 'src/test/resources/market_inputs.csv --input-delay-ms 1 --output-delay-ms 4 --jitter-pct 0.2 --seed 42'
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5.1.0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5.6.0
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Execute Java Application
+        run: |
+          mvn exec:java \
+          -Dexec.args="${{ inputs.app_arguments || 'src/test/resources/market_inputs.csv --input-delay-ms 1 --output-delay-ms 4 --jitter-pct 0.2 --seed 42' }}
