@@ -34,7 +34,7 @@ CLI flags:
 
 ## Assumptions
 
-The solution provided is based on teh assumption below.
+The solution provided is based on the assumptions below.
 
 **Header row**.
 The first line of the input CSV is assumed to be a header and is skipped with no validation. Data are read by column position, not by header name.
@@ -68,8 +68,8 @@ Also, optimization of event publishing, i.e. batching, is out of scope at this t
 **Rate mismatch**.
 To simulate rate mismatch, an optional separate input/output configuration delays are provided.
 
-**End of stream**.
-Once input event stream is closed (no more records), the consumer keeps draining events till buffer is empty (graceful shutdown).
+**Events conflation**.
+As client is not able to sustain source event rate, it is assumed that client accepts the fact not all events will be delivered.
 
 **Output schema**,
 ```
@@ -103,7 +103,7 @@ stream providers in the future, pub/sub interface extraction, unit tests.
 4. **Audit Trail** 20%. Plugging in audit trail interface and implementation as per task requirement.
 5. **Readme** 10%. 
 
-Total time is around 5.5 hours.
+Total time was ~5 hours.
 
 ## Design choices
 1. The task is to support slow consumer, its imperative that we don't have unlimited in-memory storage.
@@ -123,8 +123,8 @@ It's a collaboration tool that allows to validate and improve solution design, r
 The approach to use LinkedHasMap was identified prior to consulting AI agent, then it was confirmed in conversation with the agent.
 I worked through design decisions (conflation strategy, fairness guarantee) in conversation before code was written. 
 This was iterative process, i.e. the code was built incrementally, one feature or class or refactoring item at a time, with me reviewing each diff,
-making local changes if needed, then running tests and olution.
-First ConflatingBuffer was created along with publisher, all as one class.
-It was then split into interface, concrete implementation and other classes, the process repeated number of times. 
-The class and interface structures, orchestration pipeline were created based on my instructions.
-The Audit requirements, what and when needs to be logged were provided by me.
+making local changes if needed, then running tests and solution.
+First ConflatingBuffer was created along with publisher, all as one class. It was then split into interface,
+concrete implementation and other classes, then the process repeated number of times refining implementation approach
+and addition of unit tests. The classes, interface structures, orchestration pipeline were created based on my input.
+The audit functionality requirements were picked up at later stage and implemented based on my input.
