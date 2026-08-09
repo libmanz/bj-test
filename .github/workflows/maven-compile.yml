@@ -2,9 +2,10 @@ name: Java Compile CI
 
 on:
   push:
-    branches: [ "main" ] # Change to "master" if your default branch uses that name
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch: # Enables manual triggering in the GitHub UI
 
 jobs:
   build:
@@ -19,7 +20,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'maven' # Speeds up future builds by caching dependencies
+          cache: 'maven'
 
       - name: Compile with Maven
         run: mvn compile
