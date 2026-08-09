@@ -1,0 +1,25 @@
+name: Java Compile CI
+
+on:
+  push:
+    branches: [ "main" ] # Change to "master" if your default branch uses that name
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven' # Speeds up future builds by caching dependencies
+
+      - name: Compile with Maven
+        run: mvn compile
