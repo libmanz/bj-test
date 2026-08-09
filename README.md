@@ -86,7 +86,8 @@ In addition to the required derived values output schema the following fields ar
 
 ## What I would do if I have more time
 
-1. Support event re-ordering for out of order events.
+1. Explore alternative solutions, e.g. is it possible to use LMAX disruptor for the queue design.  
+2. Support event re-ordering for out of order events.
 2. Support queue batch operation. 
 3. Review classes naming conventions.
 4. Add logging. 
